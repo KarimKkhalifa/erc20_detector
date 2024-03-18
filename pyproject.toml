@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "erc20-detector-app"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+sqlalchemy = "^2.0.28"
+asyncpg = "^0.29.0"
+aio-pika = "^9.4.0"
+alembic = "^1.13.1"
+pydantic = "^2.6.4"
+pydantic-settings = "^2.2.1"
+python-dotenv = "^1.0.1"
+psycopg2-binary = "^2.9.9"
+
+[tool.poetry.dev-dependencies]
+fire = "^0.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+migrate = "manage:migrate"
+auto_migration = "manage:auto_migration"

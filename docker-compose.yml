@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  erc20_detector_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: erc20_detector_app
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  rabbitmq:
+    image: 'rabbitmq:3-management'
+    hostname: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+    ports:
+      - '5672:5672' # used by the application to connect to RabbitMQ
+      - '15672:15672' # RabbitMQ management dashboard
+    volumes:
+      - 'rabbitmq_data:/var/lib/rabbitmq'
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+volumes:
+  rabbitmq_data:

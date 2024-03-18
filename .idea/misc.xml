@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="sdkName" value="Poetry (erc20_detector_app)" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Poetry (erc20_detector_app)" project-jdk-type="Python SDK" />
+</project>
